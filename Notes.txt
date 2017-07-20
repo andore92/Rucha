@@ -1,0 +1,21 @@
+Notes
+
+1.
+
+https://github.com/lyndachiwetelu/using-passport-with-sequelize-and-mysql
+
+2.
+
+https://code.tutsplus.com/tutorials/using-passport-with-sequelize-and-mysql--cms-27537
+
+3.
+Hypenate Api
+
+https://docs.hyphenate.io/docs/server-overview
+
+4.
+
+Node email verfication
+
+https://github.com/whitef0x0/node-email-verification
+
