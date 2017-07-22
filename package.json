@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/andore92/Rucha#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "bulma": "^0.4.3",
     "express": "^4.15.3",
