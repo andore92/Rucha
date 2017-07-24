@@ -21,7 +21,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var router = require('./controllers/rucha-controller.js');
+var router = require('./controllers/mediaController.js');
 app.use('/', router);
 
 db.sequelize.sync({force: true}).then(function(){
