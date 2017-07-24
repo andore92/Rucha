@@ -49,6 +49,10 @@ router.get('/', function (req, res) {
   res.redirect('/login');
 });
 
+router.get('/index', function (req, res) {
+  res.render('index');
+});
+
 router.get('/login', function (req, res) {
   res.render('login');
 });
@@ -76,9 +80,9 @@ router.post('/user/login', function (req, res) {
       user_password: req.body.user_password
     }
   }).then(function(data){
-    console.log("user id: " + data.id);
+    
     console.log("login worked");
-    res.redirect('/');
+    res.redirect('/index');
   });
 });
 
