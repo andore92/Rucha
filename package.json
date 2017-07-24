@@ -1,22 +1,32 @@
-{
-  "name": "Ruchatv",
+=======
+  "name": "rucha",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andore92/Rucha.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "express-sequelize": "0.0.4",
-    "mysql": "^2.13.0",
-    "path": "^0.12.7",
-    "sequelize": "^4.4.2"
+  "bugs": {
+    "url": "https://github.com/andore92/Rucha/issues"
   },
-  "devDependencies": {},
-  "description": ""
+  "homepage": "https://github.com/andore92/Rucha#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "bulma": "^0.4.3",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.10",
+    "method-override": "^2.3.9",
+    "mysql2": "^1.3.6",
+    "sequelize": "^4.4.2",
+    "twilio": "^3.5.0"
+  }
+
 }

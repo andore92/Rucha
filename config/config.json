@@ -1,9 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password":"divya",
-    "database": "rucha_db",
-    "host": "127.0.0.1",
+
+=======
+    "password": "tuckerboy11",
+    "database": "user_db",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
@@ -20,4 +22,7 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
+
+=======
 }
+
