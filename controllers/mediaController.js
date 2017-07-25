@@ -5,45 +5,6 @@ var express =require("express");
 var db = require("../models");
 
 
-router.get("/media", function(req, res){
-
-	db.MediaType.findAll({
-	}).then(function(allMediaType) {
-		var allMediaType = {
-				media_data : allMediaType
-			};
-			
-			console.log("Media Type recevied are :::: " +allMediaType.media_data )
-			return res.render("index", allMediaType);
-	   });
-});
-
-router.get("/media/categories", function(req,res){
-	
-		
-	db.MediaCategories.findAll({
-	}).then(function(allcategoryType) {
-		var categories = {
-				category_data : allcategoryType
-			};
-			
-			return res.render("index", allcategoryType);
-	   });
-});
-
-router.get("/content/categories", function(req,res){
-	
-		
-	db.MediaSchedule.findAll({
-	}).then(function(allcontentType) {
-		var content = {
-				content_data : allcontentType
-			};
-			
-			return res.render("index", allcontentType);
-	   });
-});
-
 
 router.get('/', function (req, res) {
   res.redirect('/login');
