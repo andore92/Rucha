@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -23,6 +25,21 @@ app.set("view engine", "handlebars");
 
 var router = require('./controllers/mediaController.js');
 app.use('/', router);
+
+// Added by Divya Jain for Sockets 
+// Register events on socket connection
+// Register Chat event 
+io.on('connection', function(socket){ 
+  socket.on('chatMessage', function(from, msg){
+    io.emit('chatMessage', from, msg);
+  });
+// Register Notify event 
+  socket.on('notifyUser', function(user){
+    io.emit('notifyUser', user);
+  });
+});
+
+
 
 db.sequelize.sync({force: true}).then(function(){
 	app.listen(PORT, function(){
