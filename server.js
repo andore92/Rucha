@@ -1,10 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+
+
 
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var PORT = process.env.PORT || 3000;
 
 var db = require("./models");
@@ -42,7 +44,7 @@ io.on('connection', function(socket){
 
 
 db.sequelize.sync({force: true}).then(function(){
-	app.listen(PORT, function(){
+	server.listen(PORT, function(){
 	console.log("listenning on http://localhost:" + PORT);
 });
 });
