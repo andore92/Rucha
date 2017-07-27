@@ -35,6 +35,11 @@ io.on('connection', function(socket){
   socket.on('chatMessage', function(from, msg){
     io.emit('chatMessage', from, msg);
   });
+// Messages for a specific chat room
+  socket.on('chatroomMessage', function(chatroom, from, msg){
+    io.emit('chatroomMessage', chatroom, from, msg);
+  }); 
+
 // Register Notify event 
   socket.on('notifyUser', function(user){
     io.emit('notifyUser', user);
