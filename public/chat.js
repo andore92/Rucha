@@ -29,7 +29,7 @@ socket.on('notifyUser', function(user){
   setTimeout(function(){ $('#notifyUser').text(''); }, 10000);;
 });
 
-var user1 = "";
+var user1;
 // ------ =-----------------------
 // this should be replace by SEQUALIZE 
 //--------------------------------------
@@ -40,17 +40,18 @@ getUser();
   function getUser() {
     $.get('/user/create', function(data) {
       console.log("User", data);
-        user1 = data[0].user_name;
+        user1 = data[0].id;
     console.log(user1);
-    });
+   
 
   
   //var name = makeid();
-  var name = "";
-  name = user1;
+  
+  var name = user1;
   console.log(name);
   $('#user').val(name);
   socket.emit('chatMessage', 'System', '<b>' + name + '</b> has joined the discussion');
+   });
 }
 });
 /*function makeid() {
