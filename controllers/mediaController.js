@@ -1,9 +1,7 @@
 var express =require("express");
- var router = express.Router();
-
+var router = express.Router();
 
 var db = require("../models");
-
 
 
 router.get('/', function (req, res) {
@@ -18,6 +16,10 @@ router.get('/login', function (req, res) {
   res.render('login');
 });
 
+router.get('/home', function (req, res) {
+  res.render('home');
+});
+
 router.get('/register', function(req, res){
   res.render('register');
 });
@@ -28,7 +30,6 @@ router.post('/user/create', function (req, res) {
     user_name: req.body.user_name,
     user_password: req.body.user_password
   }).then(function(data){
-    console.log("account creation worked!");
     res.redirect('/');
   });
 });
@@ -41,9 +42,8 @@ router.post('/user/login', function (req, res) {
       user_password: req.body.user_password
     }
   }).then(function(data){
-    
-    console.log("login worked");
-    res.redirect('/index');
+    res.redirect('/home');
+
   });
 });
 
