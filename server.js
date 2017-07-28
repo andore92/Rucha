@@ -2,7 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
 
+
+
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var PORT = process.env.PORT || 3000;
 
 var db = require("./models");
@@ -24,8 +28,28 @@ app.set("view engine", "handlebars");
 var router = require('./controllers/mediaController.js');
 app.use('/', router);
 
+// Added by Divya Jain for Sockets 
+// Register events on socket connection
+// Register Chat event 
+io.on('connection', function(socket){ 
+  socket.on('chatMessage', function(from, msg){
+    io.emit('chatMessage', from, msg);
+  });
+// Messages for a specific chat room
+  socket.on('chatroomMessage', function(chatroom, from, msg){
+    io.emit('chatroomMessage', chatroom, from, msg);
+  }); 
+
+// Register Notify event 
+  socket.on('notifyUser', function(user){
+    io.emit('notifyUser', user);
+  });
+});
+
+
+
 db.sequelize.sync({force: true}).then(function(){
-	app.listen(PORT, function(){
+	server.listen(PORT, function(){
 	console.log("listenning on http://localhost:" + PORT);
 });
 });
