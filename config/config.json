@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "divya",
+    "password": "",
     "database": "rucha_db",
     "host": "localhost",
     "dialect": "mysql"
