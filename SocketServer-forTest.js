@@ -18,15 +18,6 @@ io.on('connection', function(socket){
   socket.on('chatMessage', function(from, msg){
     io.emit('chatMessage', from, msg);
   });
-
-// Register events on socket connection
-// Register Chat event 
-io.on('connection', function(socket){ 
-  socket.on('chatroomMessage', function(chatroom, from, msg){
-    io.emit('chatroomMessage', chatroom, from, msg);
-  });
-
-
 // Register Notify event 
   socket.on('notifyUser', function(user){
     io.emit('notifyUser', user);

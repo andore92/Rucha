@@ -1,8 +1,25 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
+var NodeSession = require('node-session');
+// var chatrouter = express.Router();
 
 
+
+// Initialization session to trace userName/ID and chatroom Name/ID 
+var NodeSession = require('node-session');
+ 
+// init 
+var nodeSession  = new NodeSession({secret: 'Q3UBzdH9GEfiRCTKbi5MTPyChpzXLsTD'});
+
+function session(req, res, next){
+    nodeSession.startSession(req, res, next);
+}
+ 
+// start session for an http request - response 
+// this will define a session property to the request object 
+//session.startSession(req, res, callback);
+//  END Session Init 
 
 var app = express();
 var server = require('http').Server(app);
@@ -25,8 +42,18 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var router = require('./controllers/mediaController.js');
-app.use('/', router);
+app.use(session);
+
+// var router = require('./controllers/mediaController.js');
+// app.use('/', router);
+
+// var chatrouter = require('./controllers/chatroomController.js');
+// app.use('/chatroom', chatrouter);
+
+
+require('./controllers/mediaController.js')(app);
+
+require('./controllers/chatroomController.js')(app);
 
 // Added by Divya Jain for Sockets 
 // Register events on socket connection
@@ -35,11 +62,6 @@ io.on('connection', function(socket){
   socket.on('chatMessage', function(from, msg){
     io.emit('chatMessage', from, msg);
   });
-// Messages for a specific chat room
-  socket.on('chatroomMessage', function(chatroom, from, msg){
-    io.emit('chatroomMessage', chatroom, from, msg);
-  }); 
-
 // Register Notify event 
   socket.on('notifyUser', function(user){
     io.emit('notifyUser', user);
@@ -48,8 +70,8 @@ io.on('connection', function(socket){
 
 
 
-db.sequelize.sync({force: true}).then(function(){
+db.sequelize.sync({force: false}).then(function(){
 	server.listen(PORT, function(){
 	console.log("listenning on http://localhost:" + PORT);
-});
+	});
 });

@@ -1,9 +1,21 @@
+                  HELLO
+                  {{!-- {{this.user}}. {{this.croom}} --}}
+                  <div>
+                  {{!-- {{ #userinChatroom}} --}}
+                      <div class = "col-xs-9 text center">
+                       <h1> print user name here</h1>
+                        <pre>{{userinChatroom.user}} </pre>
+                      </div>
 
+                      <div class="col-xs-3" text-center">
+                           </div>
 
+                  {{!-- {{/each}} --}}
+                  </div>
 <ul id="messages"></ul>
     <span id="notifyUser"></span>
-    <div class="navbar-fixed-bottom" id="form" >
-    <form id="text-submit" action="" onsubmit="return submitfunction();" > 
+    <form id="form" action="" onsubmit="return submitfunction();" > 
       <input type="hidden" id="user" value="" /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/> 
     </form>
-   	</div>
+
+    

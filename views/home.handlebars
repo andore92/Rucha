@@ -4,7 +4,7 @@
     <div class="col-sm-8">
     	<div class="panel panel-default">
   			<div class="panel-heading">Lorem Ipsum</div>
-  			<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec luctus eros. Fusce justo metus, semper vel porta sed, tristique vel ex. Integer viverra purus sed sapien ornare, quis imperdiet tortor suscipit. Vivamus hendrerit condimentum arcu, a auctor lacus luctus eu. Nam lectus dolor, molestie ut nibh id, malesuada porttitor nisi. Nulla tincidunt sit amet lacus sit amet lacinia. Etiam sollicitudin, urna imperdiet pulvinar luctus, diam massa gravida eros, feugiat gravida sem enim eu orci. Quisque consectetur erat sed tempus consequat. Mauris et turpis a eros scelerisque egestas in eu ligula. Aenean mattis ultricies nunc, non laoreet enim pulvinar sodales. In vitae tellus ipsum. Praesent at tortor eget libero dictum suscipit in eget leo. Sed sed rutrum tellus.
+  			<div class="panel-body">        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec luctus eros. Fusce justo metus, semper vel porta sed, tristique vel ex. Integer viverra purus sed sapien ornare, quis imperdiet tortor suscipit. Vivamus hendrerit condimentum arcu, a auctor lacus luctus eu. Nam lectus dolor, molestie ut nibh id, malesuada porttitor nisi. Nulla tincidunt sit amet lacus sit amet lacinia. Etiam sollicitudin, urna imperdiet pulvinar luctus, diam massa gravida eros, feugiat gravida sem enim eu orci. Quisque consectetur erat sed tempus consequat. Mauris et turpis a eros scelerisque egestas in eu ligula. Aenean mattis ultricies nunc, non laoreet enim pulvinar sodales. In vitae tellus ipsum. Praesent at tortor eget libero dictum suscipit in eget leo. Sed sed rutrum tellus.
 
 			Pellentesque suscipit ornare lorem laoreet elementum. Duis mollis quam non orci pulvinar, quis venenatis risus sollicitudin. Fusce ac rutrum orci. Pellentesque lobortis viverra magna eget lacinia. Donec lobortis, ex ac egestas feugiat, nibh magna hendrerit lacus, nec interdum nisl libero nec erat. Nunc ultrices mauris tortor, vitae lobortis nisi varius id. Suspendisse potenti. Etiam ligula risus, viverra vel rutrum quis, consectetur a dui. Proin imperdiet a eros sed efficitur. Pellentesque rhoncus velit ac sem volutpat sodales. Ut dignissim tempus augue, sed volutpat magna ultrices in. Vivamus et nulla finibus, porttitor nunc vitae, mattis est. Sed mattis magna a odio ultrices, ac viverra urna ultricies. Ut venenatis non tortor quis vestibulum.</div>
 		</div>
@@ -16,28 +16,53 @@
     <div class="col-sm-4" style="background-color:lavenderblush;">
     	<div class="panel panel-default">
   			<div class="panel-heading">Room View</div>
-  			<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec luctus eros. Fusce justo metus, semper vel porta sed, tristique vel ex. Integer viverra purus sed sapien ornare, quis imperdiet tortor suscipit. Vivamus hendrerit condimentum arcu, a auctor lacus luctus eu. Nam lectus dolor, molestie ut nibh id, malesuada porttitor nisi. Nulla tincidunt sit amet lacus sit amet lacinia. Etiam sollicitudin, urna imperdiet pulvinar luctus, diam massa gravida eros, feugiat gravida sem enim eu orci. Quisque consectetur erat sed tempus consequat. Mauris et turpis a eros scelerisque egestas in eu ligula. Aenean mattis ultricies nunc, non laoreet enim pulvinar sodales. In vitae tellus ipsum. Praesent at tortor eget libero dictum suscipit in eget leo. Sed sed rutrum tellus.
+  			<div class="panel-body">
 
-			Pellentesque suscipit ornare lorem laoreet elementum. Duis mollis quam non orci pulvinar, quis venenatis risus sollicitudin. Fusce ac rutrum orci. Pellentesque lobortis viverra magna eget lacinia. Donec lobortis, ex ac egestas feugiat, nibh magna hendrerit lacus, nec interdum nisl libero nec erat. Nunc ultrices mauris tortor, vitae lobortis nisi varius id. Suspendisse potenti. Etiam ligula risus, viverra vel rutrum quis, consectetur a dui. Proin imperdiet a eros sed efficitur. Pellentesque rhoncus velit ac sem volutpat sodales. Ut dignissim tempus augue, sed volutpat magna ultrices in. Vivamus et nulla finibus, porttitor nunc vitae, mattis est. Sed mattis magna a odio ultrices, ac viverra urna ultricies. Ut venenatis non tortor quis vestibulum.</div>
+
+               <div class="col-xs-6 text-center" class="deliver">
+                <div class="row">
+
+                  {{#each chatroom_data}}
+                      <div class = "col-xs-9 text center">
+                        
+                        <pre>{{this.id}}. {{this.chatroom_name}} {{this.userName}}</pre>
+                      </div>
+
+                      <div class="col-xs-3" text-center">
+                        <form action="/chatroom/join?_method=PUT" method="POST">
+                                <input type="hidden" name="chatroomID" value= {{this.id}}>
+
+                                <button type="submit"> Join it </button>
+                            </form>
+                        </div>
+
+                  {{/each}}
+                </div>
+              </div>
+
+        </div>  {{!--Panel-body--}}
 		</div>
-    	<div class="row">
-    		<div class="col-sm-12" style="background-color:lavender;">
-    			<div class="panel panel-default">
-  					<div class="panel-heading">Create Room</div>
-  					<div class="panel-body">
-						<form action="/room/new" method="GET">
+      <div class="row">
+        <div class="col-sm-12" style="background-color:lavender;">
+          <div class="panel panel-default">
+            <div class="panel-heading">Create Room</div>
+            <div class="panel-body">
+            <form action="/chatroom/create" method="POST">
+                <center><label for="newchatroom">Chatroom Name</label></center>
+                <textarea class="form-control" name="chatroom_name"></textarea>
+          
+                 <center>
+                    <button id="submit-button2" type="submit" class="btn btn-danger" >Make New Room</button>
+                </center>
 
-						<center>
-		  					<button id="submit-button" type="submit" class="btn btn-danger" >Make New Room</button>
-						</center>
 
-						</form>
-  					</div>
-				</div>
-    		</div>
-    	</div>
+            </form>
+            </div>
+        </div>
+        </div>
+      </div>
     </div>
-</div>>
+</div>
 </div>
 {{!-- view all rooms --}}
 

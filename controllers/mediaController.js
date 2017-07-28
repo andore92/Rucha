@@ -1,50 +1,74 @@
-var express =require("express");
-var router = express.Router();
-
+//var express =require("express");
+//var router = express.Router();
 var db = require("../models");
 
+
+module.exports = function(router){
 
 router.get('/', function (req, res) {
   res.redirect('/login');
 });
 
-router.get('/index', function (req, res) {
-  res.render('index');
-});
 
 router.get('/login', function (req, res) {
   res.render('login');
-});
-
-router.get('/home', function (req, res) {
-  res.render('home');
 });
 
 router.get('/register', function(req, res){
   res.render('register');
 });
 
+router.get('/home', function(req, res){
+  res.render('home');
+});
+
+
+router.get('/homeaaa', function(req, res){
+  res.render('chatroom');
+});
 
 router.post('/user/create', function (req, res) {
+
   db.user.create({
     user_name: req.body.user_name,
     user_password: req.body.user_password
   }).then(function(data){
+    console.log("account creation worked!");
     res.redirect('/');
   });
 });
 
 
 router.post('/user/login', function (req, res) {
+  user = req.body.user_name
+      console.log("login received for  " + user);
   db.user.findOne({
     where: {
-      user_name: req.body.user_name,
-      user_password: req.body.user_password
+      user_name: req.body.user_name
+      // user_password: req.body.user_password
     }
-  }).then(function(data){
-    res.redirect('/home');
+  }).then(function(data)
 
-  });
+{
+      var userObj = {
+        user : data
+      };
+    req.session.put('user.name', user);
+    req.session.put('user.id', userObj.user.dataValues.id);
+    console.log("MEDIA CONTROLLER: " + req.session.get('user.name', 'goAWAY '))
+    console.log("MEDIA CONTROLLER id : " + userObj.user.dataValues.id)
+    console.log("login worked" + userObj);
+     return res.render('home', userObj);
+
+  }
+  // {
+    
+  //   console.log("login worked");
+  //   // res.render('index', {l_user_name});
+  //  // res.render('index');
+  //   res.redirect('/index');
+  // }
+  );
 });
-
-module.exports = router;
+} // END of export function 
+//module.exports = router;
