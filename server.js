@@ -16,10 +16,6 @@ function session(req, res, next){
     nodeSession.startSession(req, res, next);
 }
  
-// start session for an http request - response 
-// this will define a session property to the request object 
-//session.startSession(req, res, callback);
-//  END Session Init 
 
 var app = express();
 var server = require('http').Server(app);
@@ -44,13 +40,6 @@ app.set("view engine", "handlebars");
 
 app.use(session);
 
-// var router = require('./controllers/mediaController.js');
-// app.use('/', router);
-
-// var chatrouter = require('./controllers/chatroomController.js');
-// app.use('/chatroom', chatrouter);
-
-
 require('./controllers/mediaController.js')(app);
 
 require('./controllers/chatroomController.js')(app);
@@ -62,6 +51,10 @@ io.on('connection', function(socket){
   socket.on('chatMessage', function(from, msg){
     io.emit('chatMessage', from, msg);
   });
+//
+  socket.on('chatroomMessage', function(chatroom,from, msg){
+    io.emit('chatroomMessage', chatroom, from, msg);
+  });  
 // Register Notify event 
   socket.on('notifyUser', function(user){
     io.emit('notifyUser', user);

@@ -1,32 +1,19 @@
 // 
 var express =require("express");
-// var chatrouter = express.Router();
-
 var db = require("../models");
 
 
 module.exports = function(chatrouter){
-// router.get('/', function (req, res) {
-//   res.redirect('/chatroom/view');
-// });
 
-// chatrouter.get('/chatroom', function (req, res) {
-//   res.render('home');
-// });
-
-//chatrouter.get('/home', function (req, res) {
 chatrouter.get('/index', function (req, res) {
   userName = req.session.get('user.name', 'goAWAY ');
   ChatroomName = req.session.get('chatroom.name', 'goAWAY ');
-      console.log("going to  rooms  with User = "+ userName + " Chatroom name ="+ ChatroomName);
+      console.log("going to  rooms  with User = "+ userName + " Chatrom name ="+ ChatroomName);
   var userinChatroom = {
-    user: userName
-    // croom: ChatroomName
+    loginUser: userName,
+    croom: ChatroomName
   };
-  // var userinChatroomObJ = {
-  //   userinChatroom: userinChatroom
-  // }; // res.render('index', userinChatroomObJ);
-  console.log(userinChatroom);
+
   res.render('index', userinChatroom);
 });
 
@@ -73,11 +60,12 @@ chatrouter.post('/chatroom/create', function (req, res) {
 
 
 chatrouter.put('/chatroom/join', function (req, res) {
-  //var l_user_name = req.body.user_name;
+ 
   var lUserId = req.session.get('user.id', 'goAWAY ');
   var lChatroomId = req.body.chatroomID
       req.session.put('chatroom.name', req.body.chatroom_name);
     req.session.put('chatroom.id', req.body.chatroomID);
+    console.log("JOIN CHAT ==" + req.body.chatroom_name)
   db.userInChatroom.create({
     active : true,
     userId: lUserId,
@@ -87,5 +75,5 @@ chatrouter.put('/chatroom/join', function (req, res) {
     res.redirect('/index');
   });
 });
-}; // Module export function 
-//module.exports = chatrouter;
+}; 
+

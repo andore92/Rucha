@@ -1,6 +1,6 @@
 var socket = io(); 
 function submitfunction(){
-  var from = $('#user').val();
+  var from = $('#loggedUser').val();
   var message = $('#msgbox').val();
   if(message != '') {
   socket.emit('chatMessage', from, message);
@@ -11,7 +11,7 @@ $('#msgbox').val('').focus();
 
 // Function to send message to specific chatroom 
 function submittoChatroomfunction(){
-  var from = $('#user').val();
+  var from = $('#loggedUser').val();
   var chatroom = $('#chatroom').val();
   var message = $('#msgbox').val();
   if(message != ''  ) {
@@ -22,19 +22,19 @@ $('#msgbox').val('').focus();
 }
 
 function notifyTyping() { 
-  var user = $('#user').val();
+  var user = $('#loggedUser').val();
   socket.emit('notifyUser', user);
 }
 
 socket.on('chatMessage', function( from, msg){
-  var me = $('#user').val();
+  var me = $('#loggedUser').val();
   var color = (from == me) ? 'green' : '#009afd';
   var from = (from == me) ? 'Me' : from;
   $('#messages').append('<li><b style="color:' + color + '">' + from + '</b>: ' + msg + '</li>');
 });
 
 socket.on('chatroomMessage', function(chatroom, from, msg){
-  var me = $('#user').val();
+  var me = $('#loggedUser').val();
   var mychatroom = $('#chatroom').val();  
   var color = (from == me) ? 'green' : '#009afd';
   var from = (from == me) ? 'Me' : from;
@@ -46,7 +46,7 @@ socket.on('chatroomMessage', function(chatroom, from, msg){
 
 
 socket.on('notifyUser', function(user){
-  var me = $('#user').val();
+  var me = $('#loggedUser').val();
   if(user != me) {
     $('#notifyUser').text(user + ' is typing ...');
   }
@@ -54,19 +54,15 @@ socket.on('notifyUser', function(user){
 });
 
 // -----------------------------
-// this should be replace by SEQUALIZE 
+
 //--------------------------------------
 $(document).ready(function(){
-  var name = makeid();
-  $('#user').val(name);
-  socket.emit('chatMessage', 'System', '<b>' + name + '</b> has joined the discussion');
-  socket.emit('chatroomMessage', 'systemRoom', 'System', '<b>' + name + '</b> has joined the discussion');
-});
-function makeid() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for( var i=0; i < 5; i++ ) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
+    var name = $('#loggedUser').val();
+   var chatroom = $('#chatroom').val();
+  if (name != null){
+      socket.emit('chatMessage', 'System', '<b>' + name + '</b> has joined the chatroom ' + chatroom);
+      socket.emit('chatroomMessage', 'systemRoom', 'System', '<b>' + name + '</b> has joined the chatroom' +chatroom );
 }
+});
+
+

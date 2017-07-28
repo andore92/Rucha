@@ -1,5 +1,4 @@
-//var express =require("express");
-//var router = express.Router();
+
 var db = require("../models");
 
 
@@ -47,9 +46,7 @@ router.post('/user/login', function (req, res) {
       user_name: req.body.user_name
       // user_password: req.body.user_password
     }
-  }).then(function(data)
-
-{
+  }).then(function(data) {
       var userObj = {
         user : data
       };
@@ -58,17 +55,9 @@ router.post('/user/login', function (req, res) {
     console.log("MEDIA CONTROLLER: " + req.session.get('user.name', 'goAWAY '))
     console.log("MEDIA CONTROLLER id : " + userObj.user.dataValues.id)
     console.log("login worked" + userObj);
-     return res.render('home', userObj);
-
-  }
-  // {
     
-  //   console.log("login worked");
-  //   // res.render('index', {l_user_name});
-  //  // res.render('index');
-  //   res.redirect('/index');
-  // }
-  );
+     return res.redirect('/chatroom');
+
+     });
 });
-} // END of export function 
-//module.exports = router;
+} // END of export function

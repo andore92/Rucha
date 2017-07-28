@@ -1,21 +1,17 @@
-                  HELLO
-                  {{!-- {{this.user}}. {{this.croom}} --}}
+
                   <div>
-                  {{!-- {{ #userinChatroom}} --}}
+                  {{userinChatroom}}
                       <div class = "col-xs-9 text center">
-                       <h1> print user name here</h1>
-                        <pre>{{userinChatroom.user}} </pre>
+                        <p>{{this.loginUser}}  . {{this.croom}} </p>
+                                <input type="hidden" id="loggedUser" value= {{this.loginUser}}>
+                                <input type="hidden" id="chatroom" value= {{this.croom}}>                         
                       </div>
-
-                      <div class="col-xs-3" text-center">
-                           </div>
-
-                  {{!-- {{/each}} --}}
                   </div>
 <ul id="messages"></ul>
     <span id="notifyUser"></span>
-    <form id="form" action="" onsubmit="return submitfunction();" > 
-      <input type="hidden" id="user" value="" /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/> 
+    <form id="form" action="" onsubmit="return submittoChatroomfunction();" > 
+     
+      <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/> 
     </form>
 
-    
+   
