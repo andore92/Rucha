@@ -15,6 +15,8 @@ var nodeSession  = new NodeSession({secret: 'Q3UBzdH9GEfiRCTKbi5MTPyChpzXLsTD'})
 function session(req, res, next){
     nodeSession.startSession(req, res, next);
 }
+
+
  
 
 var app = express();
