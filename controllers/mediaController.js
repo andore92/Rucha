@@ -34,10 +34,6 @@ router.get('/home', function (req, res) {
 });
 
 
-router.get('/homeaaa', function(req, res){
-  res.render('chatroom');
-});
-
 router.post('/user/create', function (req, res) {
 
   db.user.create({
