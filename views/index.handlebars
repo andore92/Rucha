@@ -8,20 +8,22 @@
     </div>                      
   </div>{{!-- close sidebar --}}
 <div class="col-sm-10">
+    <div id="message-div-header">
+      <br>
+    </div>
     <div id="message-div">
       <br>
       <ul id="messages"></ul>
       <br>
     </div>
-    <br>
-    <br>
-    <br>
     <span id="notifyUser"></span>
-    <div class="navbar-fixed-bottom" id="form">
+    <div class="" id="form">
+
       <form id="form" action="" onsubmit="return submittoChatroomfunction();"> 
-           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/> 
+           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type your message here.." /><input type="submit" id="button" value="Send"/> 
       </form>
-    </div>{{!-- close navbar-fixed-bottom --}}
+      <br>
+    </div> 
   </div>{{!-- close col-sm-10 --}}
 </div>{{!-- close row --}}
 
