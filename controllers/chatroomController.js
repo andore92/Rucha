@@ -5,6 +5,23 @@ var db = require("../models");
 
 module.exports = function(chatrouter){
 
+
+chatrouter.post('/usermessages/create', function (req, res) {
+console.log("help");
+
+var id;
+
+  id = req.session.get('user.id');
+  console.log(id);
+  console.log(req.body.message1);
+  db.userMessages.create({
+    Message: req.body.message1,
+    userId: id
+  }).then(function(data){
+    console.log("Message saved");  
+  });
+});
+
 chatrouter.get('/index', function (req, res) {
   userName = req.session.get('user.name', 'goAWAY ');
   ChatroomName = req.session.get('chatroom.name', 'goAWAY ');
