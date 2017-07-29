@@ -1,0 +1,33 @@
+{
+  "name": "rucha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andore92/Rucha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andore92/Rucha/issues"
+  },
+  "homepage": "https://github.com/andore92/Rucha#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.10",
+    "http": "0.0.0",
+    "method-override": "^2.3.9",
+    "mysql2": "^1.3.6",
+    "node-session": "^1.2.1",
+    "sequelize": "^4.4.2",
+    "socket.io": "^1.7.3",
+    "twilio": "^3.5.0"
+  }
+}

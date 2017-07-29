@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-2" id="chat-sidebar">
+    <div class="sidebar-nav-fixed affix">
+      {{userinChatroom}}
+      <h1 id="room-header">{{this.croom}}</h1>
+        <input type="hidden" id="loggedUser" value= {{this.loginUser}}>
+        <input type="hidden" id="chatroom" value= {{this.croom}}>  
+    </div>                      
+  </div>{{!-- close sidebar --}}
+<div class="col-sm-1"></div>
+<div class="col-sm-9">
+    <div id="message-div-header">
+      <br>
+    </div>
+    <div id="message-div">
+      <br>
+      <ul id="messages"></ul>
+      <br>
+      <div id="end-chat"></div>
+    </div>
+    <span id="notifyUser"></span>
+    <div class="" id="form">
+
+
+      <form id="form" action="/userMessages/create" method="POST" onsubmit="return submittoChatroomfunction();"> 
+           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" name = "message1"  onkeyup="notifyTyping();" placeholder="Type your message here.." /><input type="submit" id="button" value="Send"/> 
+
+      </form>
+      <br>
+    </div> 
+  </div>{{!-- close col-sm-10 --}}
+</div>{{!-- close row --}}
+
+
+<script>
+    $(document).ready(function(){
+        
+                $("#end-chat").animate({top: "100px"}, 1000);
+                $('body,html').animate({scrollTop: "210px"},1000);
+            return false;
+        
+    });
+    </script>
