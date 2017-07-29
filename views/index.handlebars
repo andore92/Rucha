@@ -19,8 +19,8 @@
     <span id="notifyUser"></span>
     <div class="" id="form">
 
-      <form id="form" action="" onsubmit="return submittoChatroomfunction();"> 
-           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type your message here.." /><input type="submit" id="button" value="Send"/> 
+      <form id="form" action="/userMessages/create" method="POST" onsubmit="return submittoChatroomfunction();"> 
+           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" name = "message1"  onkeyup="notifyTyping();" placeholder="Type your message here.." /><input type="submit" id="button" value="Send"/> 
       </form>
       <br>
     </div> 
