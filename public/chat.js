@@ -16,6 +16,11 @@ function submittoChatroomfunction(){
   var message = $('#msgbox').val();
   if(message != ''  ) {
   socket.emit('chatroomMessage', chatroom, from, message);
+    var message1 = {
+      message: message
+        .val()
+        .trim      
+    }
 }
 $('#msgbox').val('').focus();
   return false;
