@@ -64,3 +64,15 @@ $(document).ready(function(){
       socket.emit('chatroomMessage', 'systemRoom', 'System', '<b>' + name + '</b> has joined the chatroom' +chatroom );
 }
 });
+
+$(document).ready(function() {
+
+    var socket = io();
+
+    $(':checkbox').change(function() {
+        var state = $(this).is(':checked') ? 1 : 0;
+        var command = $(this).attr('id') + ";" + state;
+        socket.emit('message', command);
+        console.log(command);
+    });
+});

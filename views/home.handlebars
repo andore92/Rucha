@@ -5,7 +5,6 @@
     <div class="col-sm-7" style="background-color:white; border-radius: 25px;">
     	<h1>Welcome</h1>
         Welcome to Rucha, a simple chat app. 
->
 
         On the right-hand sidebar, you can view all active rooms that have been created, click the button for that room
         to join it.  if you don't see a room you wish to join, feel free to create your own using the field below the room list. Clicking on "Rucha" at the top of your screen will bring you back to this page.
@@ -19,6 +18,7 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-3 home-sidebar" style="background-color:white;">
     	<h3>Active Rooms</h3>
+        <div id="room-div">
           {{#each chatroom_data}}
           <center>
             <form action="/chatroom/join?_method=PUT" method="POST">
@@ -33,6 +33,7 @@
             <br>
           </center>
           {{/each}}
+        </div>
       <div class="row">
         <div class="col-sm-12 home-sidebar-footer" style="background-color:white;">
           <h3>Create Room</h3>
