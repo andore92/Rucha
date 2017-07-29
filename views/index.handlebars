@@ -22,22 +22,10 @@
     <div class="" id="form">
 
 
-      <form id="form" action="/userMessages/create" method="POST" onsubmit="return submittoChatroomfunction();"> 
-           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" name = "message1"  onkeyup="notifyTyping();" placeholder="Type your message here.." /><input type="submit" id="button" value="Send"/> 
-
+      <form id="form" action="" onsubmit="return submittoChatroomfunction();"> 
+           <input type="hidden" id="looser_user" value= {{userinChatroom.loginUser}} /><input id="msgbox" autocomplete="off" onkeyup="notifyTyping();" placeholder="Type yor message here.." /><input type="submit" id="button" value="Send"/> 
       </form>
       <br>
     </div> 
   </div>{{!-- close col-sm-10 --}}
 </div>{{!-- close row --}}
-
-
-<script>
-    $(document).ready(function(){
-        
-                $("#end-chat").animate({top: "100px"}, 1000);
-                $('body,html').animate({scrollTop: "210px"},1000);
-            return false;
-        
-    });
-    </script>
