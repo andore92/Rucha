@@ -1,32 +1,38 @@
-
-
-<form action="/user/login" method="POST">
-
-<div class="form-group">
-  
-  <center><label for="user_name">Username</label></center>
-  <textarea class="form-control" name="user_name"></textarea>
+<div class="login-container">
+	<form action="/user/login" method="POST">
+	<center>
+	<p>Please login with your account</p>
+	</center>
+	<div class="form-group">
+		<div class="input-group">
+	  		<span class="input-group-addon" id="basic-addon1">@</span>
+	  
+	  		<input type="text" class="form-control" name="user_name" placeholder="Username" aria-describedby="basic-addon1">
+		</div>
+		<br>
+	  <div class="input-group">
+	  		<span class="input-group-addon glyphicon glyphicon-lock" id="basic-addon1"></span>
+	  
+	  		<input type="text" class="form-control" name="user_password" placeholder="Password" aria-describedby="basic-addon1">
+		</div>
 	<br>
-  <center><label for="user_password">Password</label></center>
-  <textarea class="form-control" name="user_password"></textarea>
+	<center>
+	  <button id="submit-button" type="submit" class="btn btn-danger">Login</button>
+	</center>
+	</div>
 
-<center>
-  <button id="submit-button" type="submit" class="btn btn-danger">Login</button>
-</center>
 
+	</form>
+	<center>
+	<p>If you don't already have an account, click "Register" to create one</p>
+	</center>
+	<form action="/register" method="GET">
+		<br>
+			<center>
+			  <button id="submit-button" type="submit" class="btn btn-danger" >Register</button>
+			</center>
+		<br>
+	</form>
+	</div>
 </div>
-
-
-</form>
-
-<form action="/register" method="GET">
-
-		<center>
-		  <button id="submit-button" type="submit" class="btn btn-danger" >Register</button>
-		</center>
-
-</form>
-</div>
-
-
 

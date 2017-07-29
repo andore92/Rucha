@@ -17,8 +17,20 @@ router.get('/register', function(req, res){
   res.render('register');
 });
 
-router.get('/home', function(req, res){
-  res.render('home');
+router.get('/home', function (req, res) {  
+
+   console.log("CHAT CONTROLLER: " + req.session.get('user.name', 'goAWAY '))  
+  db.chatroom.findAll({}).then(function(allChatrooms){
+      var ChatroomsObj = {
+        chatroom_data : allChatrooms,
+        userName: req.session.get('user.name', 'goAWAY ')
+      };
+    
+    console.log("get rooms  worked");
+     return res.render('home', ChatroomsObj);
+
+  });
+
 });
 
 
@@ -61,3 +73,7 @@ router.post('/user/login', function (req, res) {
      });
 });
 } // END of export function
+
+
+
+

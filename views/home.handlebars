@@ -1,70 +1,50 @@
 {{!-- explain app --}}
 
   <div class="row">
-    <div class="col-sm-8">
-    	<div class="panel panel-default">
-  			<div class="panel-heading">Lorem Ipsum</div>
-  			<div class="panel-body">        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec luctus eros. Fusce justo metus, semper vel porta sed, tristique vel ex. Integer viverra purus sed sapien ornare, quis imperdiet tortor suscipit. Vivamus hendrerit condimentum arcu, a auctor lacus luctus eu. Nam lectus dolor, molestie ut nibh id, malesuada porttitor nisi. Nulla tincidunt sit amet lacus sit amet lacinia. Etiam sollicitudin, urna imperdiet pulvinar luctus, diam massa gravida eros, feugiat gravida sem enim eu orci. Quisque consectetur erat sed tempus consequat. Mauris et turpis a eros scelerisque egestas in eu ligula. Aenean mattis ultricies nunc, non laoreet enim pulvinar sodales. In vitae tellus ipsum. Praesent at tortor eget libero dictum suscipit in eget leo. Sed sed rutrum tellus.
 
-			Pellentesque suscipit ornare lorem laoreet elementum. Duis mollis quam non orci pulvinar, quis venenatis risus sollicitudin. Fusce ac rutrum orci. Pellentesque lobortis viverra magna eget lacinia. Donec lobortis, ex ac egestas feugiat, nibh magna hendrerit lacus, nec interdum nisl libero nec erat. Nunc ultrices mauris tortor, vitae lobortis nisi varius id. Suspendisse potenti. Etiam ligula risus, viverra vel rutrum quis, consectetur a dui. Proin imperdiet a eros sed efficitur. Pellentesque rhoncus velit ac sem volutpat sodales. Ut dignissim tempus augue, sed volutpat magna ultrices in. Vivamus et nulla finibus, porttitor nunc vitae, mattis est. Sed mattis magna a odio ultrices, ac viverra urna ultricies. Ut venenatis non tortor quis vestibulum.</div>
-		</div>
-      <div class="row">
-        <div class="col-sm-12"></div>
+    <div class="col-sm-7" style="background-color:white; border-radius: 25px;">
+    	<h1>Welcome</h1>
+        Welcome to Rucha, a simple chat app. 
+>
+
+        On the right-hand sidebar, you can view all active rooms that have been created, click the button for that room
+        to join it.  if you don't see a room you wish to join, feel free to create your own using the field below the room list. Clicking on "Rucha" at the top of your screen will bring you back to this page.
+
+    <div class="row">
+        <div class="col-sm-12">
+          <br>
+        </div>
       </div>
     </div>
-    
-    <div class="col-sm-4" style="background-color:lavenderblush;">
-    	<div class="panel panel-default">
-  			<div class="panel-heading">Room View</div>
-  			<div class="panel-body">
-
-
-               <div class="col-xs-6 text-center" class="deliver">
-                <div class="row">
-
-                  {{#each chatroom_data}}
-                      <div class = "col-xs-9 text center">
-                        
-                        <pre>{{this.id}}. {{this.chatroom_name}} {{this.userName}}</pre>
-                      </div>
-
-                      <div class="col-xs-3" text-center">
-                        <form action="/chatroom/join?_method=PUT" method="POST">
-                                <input type="hidden" name="chatroomID" value= {{this.id}}>
-                                <input type="hidden" name="chatroom_name" value= {{this.chatroom_name}}>
-
-                                <button type="submit">Join it </button>
-                            </form>
-                        </div>
-
-                  {{/each}}
-                </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3 home-sidebar" style="background-color:white;">
+    	<h3>Active Rooms</h3>
+          {{#each chatroom_data}}
+          <center>
+            <form action="/chatroom/join?_method=PUT" method="POST">
+              <div class="input-group">
+              <input type="hidden" name="chatroomID" value= {{this.id}}>
+              <input type="hidden" name="chatroom_name" value= {{this.chatroom_name}}>
+              <span class="input-group-btn">
+                <button class="btn btn-danger join-button" type="submit">{{this.chatroom_name}}</button>
+              </span>
               </div>
-
-        </div>  {{!--Panel-body--}}
-		</div>
+            </form>
+            <br>
+          </center>
+          {{/each}}
       <div class="row">
-        <div class="col-sm-12" style="background-color:lavender;">
-          <div class="panel panel-default">
-            <div class="panel-heading">Create Room</div>
-            <div class="panel-body">
+        <div class="col-sm-12 home-sidebar-footer" style="background-color:white;">
+          <h3>Create Room</h3>
             <form action="/chatroom/create" method="POST">
                 <center><label for="newchatroom">Chatroom Name</label></center>
                 <textarea class="form-control" name="chatroom_name"></textarea>
           
                  <center>
-                    <button id="submit-button2" type="submit" class="btn btn-danger" >Make New Room</button>
+                    <button id="submit-button2" type="submit" class="btn btn-danger">Make New Room</button>
                 </center>
-
-
             </form>
-            </div>
-        </div>
         </div>
       </div>
     </div>
 </div>
-</div>
-{{!-- view all rooms --}}
-
-{{!-- crete new rooms --}}
