@@ -16,11 +16,6 @@ function submittoChatroomfunction(){
   var message = $('#msgbox').val();
   if(message != ''  ) {
   socket.emit('chatroomMessage', chatroom, from, message);
-    var message1 = {
-      message: message
-        .val()
-        .trim      
-    }
 }
 $('#msgbox').val('').focus();
   return false;
@@ -70,4 +65,14 @@ $(document).ready(function(){
 }
 });
 
+$(document).ready(function() {
 
+    var socket = io();
+
+    $(':checkbox').change(function() {
+        var state = $(this).is(':checked') ? 1 : 0;
+        var command = $(this).attr('id') + ";" + state;
+        socket.emit('message', command);
+        console.log(command);
+    });
+});
