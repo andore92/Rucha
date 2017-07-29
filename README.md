@@ -1,4 +1,4 @@
-# Rucha is a simple chat app made with bootstrap, jquery, sequelize, and socket.io.
+# Rucha is a simple chat app made with bootstrap, jquery, sequelize, and socket.io located at https://shrouded-mesa-73983.herokuapp.com
 
 Users can create their own accounts, their own chat rooms, and also join chatrooms created by other users.
 
